@@ -5,7 +5,12 @@ def main(page: ft.Page):
     page.window_width = 400
     page.window_height = 700
 
-    text = ft.Container(ft.Text('Conecte-se à sua conta', size=25), alignment=ft.alignment.center, margin=ft.margin.only(bottom=20))
+    text = ft.Container(
+        ft.Text('Conecte-se à sua conta',
+                size=25,
+                weight=ft.FontWeight.W_100),
+        alignment=ft.alignment.center, margin=ft.margin.only(bottom=20))
+
     user_account_text = ft.Text('Nome de usuário ou email')
     user_account = ft.TextField(label='Ex: minha_conta@email.com', suffix_text=".com")
     user_password_text = ft.Text('Senha')
@@ -15,7 +20,9 @@ def main(page: ft.Page):
         ft.ElevatedButton('Entrar',
             width=200,
             height=50,
-        ), alignment=ft.alignment.center, margin=ft.margin.only(top=15))
+        ), 
+        alignment=ft.alignment.center, margin=ft.margin.only(top=15))
+
     made_by_text = ft.Container(
         ft.Text('Made by @kauacavalcante24 (Github)', size=10,),
         alignment=ft.alignment.bottom_center,

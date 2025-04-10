@@ -30,7 +30,7 @@ def login_view(page: ft.Page):
     def is_user(e):
         if user_account.value and user_password.value:
             if user_account.value == USER_EMAIL and user_password.value == USER_PASSWORD:
-                page.go('/home')
+                page.go('/profile')
             else:
                 show_alert('Usuário ou senha incorretos!')
                 user_account.value = ''
@@ -41,7 +41,27 @@ def login_view(page: ft.Page):
             user_account.value = ''
             user_password.value = ''
             page.update()
- 
+
+    header = ft.Column(
+        controls=[
+            ft.Container(
+                height=30,
+                content=ft.Stack(
+                    controls=[
+                        ft.Container(
+                            content=ft.Icon(ft.icons.MENU),
+                            alignment=ft.alignment.center_left
+                        ),
+                        ft.Container(
+                            content=ft.Text('Início', size=15, weight=ft.FontWeight.W_100),
+                            alignment=ft.alignment.center
+                        )
+                    ]
+                ),
+            ), ft.Divider(height=1, thickness=1, color=ft.colors.GREY)
+        ], spacing=5
+    )
+
     text = ft.Container(
         ft.Text('Conecte-se à sua conta',
                 size=25,
@@ -69,6 +89,7 @@ def login_view(page: ft.Page):
         route="/",
         controls=[
             alert,
+            header,
             text,
             user_account_text,
             user_account,

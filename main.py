@@ -1,5 +1,5 @@
 import flet as ft
-from views.home import home_view
+from views.profile import profile_view
 from views.login import login_view
 
 def main(page: ft.Page):
@@ -11,12 +11,12 @@ def main(page: ft.Page):
     page.go("/")
 
 def route_change(route):
-    page = route.page  # importante para acessar a página
+    page = route.page
     page.views.clear()
 
     if page.route == "/":
         page.views.append(login_view(page))
-    elif page.route == "/home":
-        page.views.append(home_view(page))
+    elif page.route == "/profile":
+        page.views.append(profile_view(page))
 
-ft.app(target=main)
+ft.app(target=main, assets_dir="assets") 

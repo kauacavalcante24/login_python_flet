@@ -1,29 +1,25 @@
 import flet as ft
+import time
 
 USER_EMAIL = 'admin'
 USER_PASSWORD = 'admin'
 
 def login_view(page: ft.Page):
 
-    def close_alert(e=None):
-        alert.visible = False
-        page.update()
-
     alert = ft.Container(
         visible=False,
-        bgcolor='red',
-        padding=6,
-        border_radius=10,
         content=ft.Row([
-            ft.Text('Usuário ou senha incorretos!', color='white', expand=True),
-            ft.IconButton(icon=ft.icons.CLOSE, on_click=close_alert)
-        ]),
-        alignment=ft.alignment.top_center,
+            ft.Text('Usuário ou senha incorretos!', color='red', expand=True),
+            ft.Icon(name=ft.icons.WARNING_ROUNDED, color='red')
+        ])
     )
 
     def show_alert(msg):
         alert.content.controls[0].value = msg
         alert.visible = True
+        page.update()
+        time.sleep(3)
+        alert.visible = False
         page.update()
 
     def is_user(e):
@@ -87,9 +83,9 @@ def login_view(page: ft.Page):
     return ft.View(
         route="/",
         controls=[
-            alert,
             header,
             text,
+            alert,
             user_account_text,
             user_account,
             user_password_text,

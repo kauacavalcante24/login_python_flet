@@ -1,8 +1,5 @@
 import flet as ft
 
-USER_EMAIL = 'admin'
-USER_PASSWORD = 'ADMIN'
-
 def profile_view(page: ft.Page):
  
    header = ft.Column(

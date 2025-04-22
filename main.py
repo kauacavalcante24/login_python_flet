@@ -8,7 +8,7 @@ def main(page: ft.Page):
     page.window_height = 700
     page.window_resizable = False
     page.on_route_change = route_change
-    page.go("/")
+    page.go("/")    
 
 def route_change(route):
     page = route.page
@@ -18,5 +18,5 @@ def route_change(route):
         page.views.append(login_view(page))
     elif page.route == "/profile":
         page.views.append(profile_view(page))
-
+    page.update()
 ft.app(target=main, assets_dir="assets") 
